@@ -1,0 +1,32 @@
+# Tips when making a structued routine:
+1. Understand your why
+    - What do you want to do?
+    - How does it contribute to you?
+        - Understanding the meaning behind our actions prevents empty routines
+2. Identify your goals
+    - Gaining goals and decreasing goals
+        - Gaining goals short-term milestones
+        - Decreasing goals work well with long-term framing, see the big pic
+3. Creating the routine
+    - Identify what can get in the way
+    - Not too flexible that consitency is lost, but not too rigid else it's too hard to maintain
+        - Keep it somewhat flexible
+    - Track your progress whether apps, jornalling, notes, etc.
+    - Know what time you work best
+        - [Chronotype's](https://chronotypequiz.com/) is your body's clock, when it operates, and when it's at it's peak
+            - Build your routine around this
+    - List your goals, but don't add too many
+        -  1-2 main goals are ideal
+            - Pause other goals
+            - Break down your 1-2 goals into achieveable sub-goals
+                - Which ones contribute to your deepest values
+            
+4. Key tips
+    - Habit formation occurs over time
+        - Can take months (Lally, et al. 2009)
+        - If you fail one day, what matters most is that you do a little now and get back ASAP
+            - Dont restart from zero
+    - Practice mindfullness
+    - Have protected time-blocks for deep work
+    - Review and plan the night before
+        - Helps build consistency and primes you for tomorrow
