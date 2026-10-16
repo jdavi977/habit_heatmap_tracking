@@ -30,3 +30,11 @@
     - Have protected time-blocks for deep work
     - Review and plan the night before
         - Helps build consistency and primes you for tomorrow
+
+Sources:
+https://goalsandprogress.com/habit-goals-vs-achievement-goals/
+https://api.pageplace.de/preview/DT0400.9781317780410_A23925295/preview-9781317780410_A23925295.pdf
+https://kops.uni-konstanz.de/entities/publication/2e749bfb-8533-437c-8203-7e788c910c5f
+https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674
+https://more.efpsa.org/rpblog/2026/02/01/the-what-the-hell-effect-how-small-slip-ups-spiral-out-of-control/
+https://www.sciencedirect.com/science/article/abs/pii/S0191886921003755
