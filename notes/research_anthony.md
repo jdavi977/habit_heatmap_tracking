@@ -13,7 +13,7 @@
         - Keep it somewhat flexible
     - Track your progress whether apps, jornalling, notes, etc.
     - Know what time you work best
-        - [Chronotype's](https://chronotypequiz.com/) is your body's clock, when it operates, and when it's at it's peak
+        - [A Chronotype](https://chronotypequiz.com/) is your body's clock, when it operates, and when it's at it's peak
             - Build your routine around this
     - List your goals, but don't add too many
         -  1-2 main goals are ideal
@@ -38,3 +38,4 @@ https://kops.uni-konstanz.de/entities/publication/2e749bfb-8533-437c-8203-7e788c
 https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674
 https://more.efpsa.org/rpblog/2026/02/01/the-what-the-hell-effect-how-small-slip-ups-spiral-out-of-control/
 https://www.sciencedirect.com/science/article/abs/pii/S0191886921003755
+https://link.springer.com/article/10.1007/s11031-022-09966-x
