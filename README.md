@@ -8,6 +8,7 @@ needed).
 ```bash
 uv sync                      # creates .venv and installs everything
 source .venv/bin/activate
+pre-commit install           # once per clone: run Ruff on every commit
 ```
 
 Dependencies live in `pyproject.toml`; exact versions are locked in
