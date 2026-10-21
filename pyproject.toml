@@ -1,0 +1,55 @@
+[project]
+name = "habit-heatmap-tracking"
+version = "0.1.0"
+description = "Habit heatmap tracker: Reflex frontend + Supabase backend."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "reflex==0.10.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff==0.17.1",
+]
+
+[tool.uv]
+# An app, not an installable library: install deps only.
+package = false
+
+# Ruff: PEP 8, adjusted where Reflex needs it.
+# Run from the repo root:
+#   ruff format .        # auto-format
+#   ruff check . --fix   # lint + safe autofixes
+[tool.ruff]
+# PEP 8 limit for code lines.
+line-length = 79
+target-version = "py313"
+
+# Treat these as first-party for import sorting (e.g. `from rxconfig import config`).
+src = ["frontend", "backend"]
+
+# Reflex build output (.gitignore'd files are skipped too).
+extend-exclude = ["frontend/.web", "frontend/.states", "frontend/reflex.lock"]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors (PEP 8)
+    "W",  # pycodestyle warnings (PEP 8)
+    "F",  # pyflakes: unused imports/variables, undefined names
+    "N",  # pep8-naming
+    "I",  # import ordering (PEP 8 grouping: stdlib, third-party, local)
+]
+
+[tool.ruff.lint.pycodestyle]
+# PEP 8 limit for docstrings and comments.
+max-doc-length = 72
+
+[tool.ruff.lint.per-file-ignores]
+# Reflex Vars overload `==`, so `State.x == None` / `State.x == True`
+# must stay as-is; `is None` / `is True` would break them.
+"frontend/**/*.py" = ["E711", "E712"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
