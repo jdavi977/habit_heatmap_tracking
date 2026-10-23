@@ -20,7 +20,7 @@
             - Pause other goals
             - Break down your 1-2 goals into achieveable sub-goals
                 - Which ones contribute to your deepest values
-            
+
 4. Key tips
     - Habit formation occurs over time
         - Can take months (Lally, et al. 2009)
