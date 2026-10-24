@@ -1,6 +1,7 @@
 import { useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { buildDays, monthLabels } from '../lib/heatmap.ts';
 import { format } from '../lib/dates.ts';
+import { rootScale } from '../lib/units.ts';
 
 export type CellShape = 'square' | 'rounded';
 
@@ -28,15 +29,19 @@ export function HeatmapGrid({ startKey, endKey, today, cellFor, minSize = 10, ma
   const weeks = days.length / 7;
   const scroller = useRef<HTMLDivElement>(null);
   const [cell, setCell] = useState(12);
-  const gap = 3;
+  const [gap, setGap] = useState(3);
 
   useLayoutEffect(() => {
     const el = scroller.current;
     if (!el) return undefined;
+    // Sizes are in design pixels at the 16px base; scale them with the root font size like the CSS.
     const fit = () => {
-      const width = el.clientWidth - (labels ? 36 : 0);
-      const s = Math.floor((width + gap) / weeks) - gap;
-      setCell(Math.max(minSize, Math.min(maxSize, s)));
+      const scale = rootScale();
+      const g = Math.round(3 * scale);
+      const width = el.clientWidth - (labels ? 36 * scale : 0);
+      const s = Math.floor((width + g) / weeks) - g;
+      setGap(g);
+      setCell(Math.max(Math.round(minSize * scale), Math.min(Math.round(maxSize * scale), s)));
     };
     fit();
     const ro = new ResizeObserver(fit);
