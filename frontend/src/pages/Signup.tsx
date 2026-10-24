@@ -28,7 +28,6 @@ function HeroGrid() {
 
 export default function SignUp() {
   const [isSignup, setIsSignup] = useState(true);
-  const [showPw, setShowPw] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', password: '' });
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -54,7 +53,6 @@ export default function SignUp() {
         <div className="signup__form">
           <div className="stack-sm">
             <h2>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
-            <p className="muted">{isSignup ? "Free while we're in beta." : 'Log in to see your heatmaps.'}</p>
           </div>
 
           <form className="stack">
@@ -73,14 +71,12 @@ export default function SignUp() {
               <div className="input-wrap">
                 <input
                   className="input input--with-btn"
-                  type={showPw ? 'text' : 'password'}
+                  type={'password'}
                   autoComplete={isSignup ? 'new-password' : 'current-password'}
                   value={form.password}
                   onChange={set('password')}
                 />
-                <button type="button" className="input-wrap__btn" onClick={() => setShowPw((v) => !v)}>
-                  {showPw ? 'Hide' : 'Show'}
-                </button>
+
               </div>
               <span className="field__hint">At least 8 characters.</span>
             </label>

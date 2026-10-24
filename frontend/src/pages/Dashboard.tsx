@@ -8,6 +8,7 @@ import { Chips, Segmented } from '../components/Controls.tsx';
 import { HeatmapGrid, Legend, type CellShape } from '../components/HeatmapGrid.tsx';
 import { Icon } from '../components/Icon.tsx';
 import { useLayout } from '../layouts/useLayout.ts';
+import { rem } from '../lib/units.ts';
 
 const FREQUENCY_LABEL: Record<Frequency, string> = { daily: 'Daily', weekly: 'Weekly', monthly: 'Monthly' };
 
@@ -214,7 +215,7 @@ export default function Dashboard() {
               {rates.map((r, i) => (
                 <div key={i} className="bars__col">
                   <span className="bars__pct">{Math.round(r * 100)}%</span>
-                  <span className="bars__bar" style={{ height: `${Math.max(6, (r / maxRate) * 100)}px`, background: i === bestDay ? ramp[4] : ramp[2] }} />
+                  <span className="bars__bar" style={{ height: rem(Math.max(6, (r / maxRate) * 100)), background: i === bestDay ? ramp[4] : ramp[2] }} />
                   <span className="bars__day">{WEEKDAY_SHORT[i].charAt(0)}</span>
                 </div>
               ))}

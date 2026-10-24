@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { rem } from '../lib/units.ts';
 
 const PATHS = {
   plus: <path d="M12 5v14M5 12h14" />,
@@ -57,8 +58,8 @@ export function Icon({ name, size = 20, strokeWidth = 2, className }: IconProps)
   return (
     <svg
       className={className}
-      width={size}
-      height={size}
+      width={rem(size)}
+      height={rem(size)}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
