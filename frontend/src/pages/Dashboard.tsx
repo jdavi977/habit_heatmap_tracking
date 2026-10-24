@@ -48,7 +48,7 @@ export default function Dashboard() {
           <span className="eyebrow">
             {season.name} · {format.longDate(season.start_date)} – {format.longDate(season.end_date)}
           </span>
-          <h1 className="display">Heatmaps</h1>
+          <h1>Heatmaps</h1>
         </div>
         <Chips
           label="Pillar"
@@ -59,16 +59,16 @@ export default function Dashboard() {
       </section>
 
       <div className="split">
-        <section aria-label={`${pillar.title} heatmaps`} className="split__main stack">
-          <article aria-labelledby="pillar-streak" className="card card--strong pillar-streak">
+        <section className="split__main stack">
+          <article className="card card--strong pillar-streak">
             <div className="row-between">
               <div className="pillar-streak__head">
                 <span className="flame-box" style={{ background: ramp[1], color: ramp[4] }}>
-                  <Icon name="flame" size={26} strokeWidth={1.9} />
+                  <Icon name="flame" size={26} />
                 </span>
                 <div>
                   <span className="muted">{pillar.title} streak · all actions together</span>
-                  <p id="pillar-streak" className="big-number">
+                  <p className="big-number">
                     {streak} {streak === 1 ? 'day' : 'days'}
                   </p>
                 </div>
@@ -100,7 +100,7 @@ export default function Dashboard() {
           </article>
 
           <div className="row-between">
-            <h2 className="h2">
+            <h2>
               Actions <span className="muted">· {pActions.length}</span>
             </h2>
             <Chips
@@ -122,7 +122,7 @@ export default function Dashboard() {
                 No {frequency === 'all' ? '' : `${frequency} `}actions in {pillar.title} yet.
               </p>
               <button type="button" className="btn btn--primary" onClick={() => openAddAction(pillar.id)}>
-                <Icon name="plus" size={18} strokeWidth={2.4} /> Add action
+                <Icon name="plus" size={18} /> Add action
               </button>
             </div>
           )}
@@ -164,29 +164,24 @@ export default function Dashboard() {
         </section>
 
         <aside className="split__side stack">
-          <section aria-labelledby="cust-h" className="card stack">
+          <section className="card stack">
             <div>
-              <h2 id="cust-h" className="h3">
-                Customize
-              </h2>
+              <h3>Customize</h3>
               <span className="small muted">Applies to the {pillar.title} pillar</span>
             </div>
             <div className="field">
-              <span className="field__label" id="ramp-label">
-                Color
-              </span>
-              <div role="radiogroup" aria-labelledby="ramp-label" className="ramp-picker">
+              <span className="field__label">Color</span>
+              <div className="ramp-picker">
                 {RAMP_IDS.map((id) => (
                   <button
                     key={id}
                     type="button"
-                    role="radio"
-                    aria-checked={color === id}
+                    aria-pressed={color === id}
                     className="ramp-picker__option"
                     style={{ '--ramp-hi': RAMPS[id].colors[4] } as CSSProperties}
                     onClick={() => setColors((c) => ({ ...c, [pillar.id]: id }))}
                   >
-                    <span className="ramp-picker__swatches" aria-hidden="true">
+                    <span className="ramp-picker__swatches">
                       {RAMPS[id].colors.slice(1).map((c) => (
                         <span key={c} style={{ background: c }} />
                       ))}
@@ -210,18 +205,12 @@ export default function Dashboard() {
             <Legend colors={ramp} shape={shape} />
           </section>
 
-          <section aria-labelledby="wd-h" className="card stack">
+          <section className="card stack">
             <div>
-              <h2 id="wd-h" className="h3">
-                By weekday
-              </h2>
+              <h3>By weekday</h3>
               <span className="small muted">Share of {pillar.title} completions</span>
             </div>
-            <div
-              className="bars"
-              role="img"
-              aria-label={`Completions by weekday: ${rates.map((r, i) => `${WEEKDAY_SHORT[i]} ${Math.round(r * 100)}%`).join(', ')}`}
-            >
+            <div className="bars">
               {rates.map((r, i) => (
                 <div key={i} className="bars__col">
                   <span className="bars__pct">{Math.round(r * 100)}%</span>

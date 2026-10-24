@@ -95,7 +95,7 @@ export default function Home() {
           <span className="eyebrow">
             {format.weekday(TODAY)} · Week {isoWeek(TODAY)}
           </span>
-          <h1 className="display">{format.monthDay(TODAY)}</h1>
+          <h1>{format.monthDay(TODAY)}</h1>
         </div>
         <div className="today-head__stats">
           <div className="stat-card">
@@ -103,7 +103,7 @@ export default function Home() {
             <span className="stat-card__value">
               {doneToday} <span className="muted">/ {dueToday.length}</span>
             </span>
-            <span className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={dueToday.length} aria-valuenow={doneToday} aria-label="Daily actions done">
+            <span className="progress">
               <span style={{ width: `${dueToday.length ? (doneToday / dueToday.length) * 100 : 0}%` }} />
             </span>
           </div>
@@ -117,7 +117,6 @@ export default function Home() {
                   <span className="dot" style={{ background: pillarColor(p.color) }} />
                   {p.title}
                   <strong>{simpleStreak(completions, actionIdsFor(p.id), TODAY)}</strong>
-                  <span className="visually-hidden">day streak</span>
                 </li>
               ))}
             </ul>
@@ -125,41 +124,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="goal-h" className="card card--strong season-card">
+      <section className="card card--strong season-card">
         <span className="flame-box season-card__icon">
-          <Icon name="target" size={26} strokeWidth={1.9} />
+          <Icon name="target" size={26} />
         </span>
         <div className="season-card__text">
           <span className="eyebrow">
             {season.name} · {format.longDate(season.start_date)} – {format.longDate(season.end_date)}
           </span>
-          <h2 id="goal-h" className="h2">
-            {goal.title}
-          </h2>
+<h2>{goal.title}</h2>
           <p className="text-2">{goal.center_statement}</p>
         </div>
         <div className="season-card__progress">
           <span className="small muted">
             Day <strong>{seasonDay}</strong> of {seasonDays}
           </span>
-          <span className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={seasonDays} aria-valuenow={seasonDay} aria-label="Season progress">
+          <span className="progress">
             <span style={{ width: `${(seasonDay / seasonDays) * 100}%` }} />
           </span>
         </div>
       </section>
 
-      <section aria-labelledby="todo-h" className="stack">
+      <section className="stack">
         <div className="row-between">
-          <h2 id="todo-h" className="h2">
-            To-do
-          </h2>
+<h2>To-do</h2>
           <Chips label="Filter by pillar" options={filterOptions} value={filter} onChange={setFilter} />
         </div>
 
         <Segmented
           className="today-tabs"
-          label="Frequency"
-          hideLabel
           columns={3}
           value={mobileTab}
           onChange={setMobileTab}
@@ -170,20 +163,19 @@ export default function Home() {
           {columns.map((col) => (
             <div key={col.id} className={`card today-col${mobileTab === col.id ? ' is-active' : ''}`}>
               <div className="today-col__head">
-                <h3 className="h3">{col.title}</h3>
+                <h3>{col.title}</h3>
                 <span className="mono muted small">{col.sub}</span>
               </div>
 
               {col.id === 'daily' && (
                 <>
-                  <div role="group" aria-label="Choose a day" className="week-strip">
+                  <div className="week-strip">
                     {strip.map(({ key, heat }) => (
                       <button
                         key={key}
                         type="button"
                         className="week-strip__day"
                         aria-pressed={key === day}
-                        aria-label={`${format.weekday(key)}, ${format.monthDay(key)}`}
                         onClick={() => setDay(key)}
                       >
                         <span className="week-strip__letter">{WEEKDAY_LETTERS[weekday(key)]}</span>
@@ -219,13 +211,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="pillars-h" className="stack">
+      <section className="stack">
         <div className="row-between">
-          <h2 id="pillars-h" className="h2">
-            Pillars
-          </h2>
+<h2>Pillars</h2>
           <Link to="/dashboard" className="link-arrow">
-            All heatmaps <Icon name="arrowRight" size={16} strokeWidth={2.2} />
+            All heatmaps <Icon name="arrowRight" size={16} />
           </Link>
         </div>
 
@@ -240,16 +230,14 @@ export default function Home() {
                 <div className="row-between">
                   <div className="pillar-card__title">
                     <span className="pillar-swatch" style={{ background: ramp[3] }} />
-                    <h3 className="h3">{p.title}</h3>
+                    <h3>{p.title}</h3>
                     <span className="muted">
                       {ids.length} {ids.length === 1 ? 'action' : 'actions'}
                     </span>
                   </div>
-                  <div className="pillar-card__stats">
-                    <span>
-                      <strong>{streak}</strong> day streak
-                    </span>
-                  </div>
+                  <span className="pillar-card__stats">
+                    <strong>{streak}</strong> day streak
+                  </span>
                 </div>
                 <HeatmapGrid
                   startKey={season.start_date}
@@ -265,7 +253,7 @@ export default function Home() {
                   <Legend colors={ramp} />
                   <div className="pillar-card__links">
                     <button type="button" className="btn btn--text" onClick={() => openAddAction(p.id)}>
-                      <Icon name="plus" size={16} strokeWidth={2.4} /> Add action
+                      <Icon name="plus" size={16} /> Add action
                     </button>
                     <Link to={`/dashboard?pillar=${p.id}`} className="small-link">
                       Open {p.title} heatmap

@@ -1,8 +1,6 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router';
 import { rampColors } from '../lib/ramps.ts';
 import { LogoMark } from '../components/Logo.tsx';
-
 
 /** Decorative heatmap that fills in on load. */
 function HeroGrid() {
@@ -20,7 +18,7 @@ function HeroGrid() {
     });
   }, []);
   return (
-    <div className="hero-grid" role="img" aria-label="A heatmap filling in, square by square">
+    <div className="hero-grid" aria-hidden="true">
       {cells.map((c, i) => (
         <span key={i} style={{ background: c.color, animationDelay: c.delay }} />
       ))}
@@ -29,17 +27,12 @@ function HeroGrid() {
 }
 
 export default function SignUp() {
-  const navigate = useNavigate();
-  const [mode, setMode] = useState('signup');
+  const [isSignup, setIsSignup] = useState(true);
   const [showPw, setShowPw] = useState(false);
-  const [error, setError] = useState('');
-  const [busy, setBusy] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', password: '' });
-  const isSignup = mode === 'signup';
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
-
 
   return (
     <div className="signup">
@@ -60,60 +53,45 @@ export default function SignUp() {
       <section className="signup__form-wrap">
         <div className="signup__form">
           <div className="stack-sm">
-            <h2 className="h2 h2--lg">{isSignup ? 'Create your account' : 'Welcome back'}</h2>
+            <h2>{isSignup ? 'Create your account' : 'Welcome back'}</h2>
             <p className="muted">{isSignup ? "Free while we're in beta." : 'Log in to see your heatmaps.'}</p>
           </div>
 
-          <form className="stack" noValidate>
+          <form className="stack">
             {isSignup && (
-              <div className="field">
-                <label htmlFor="su-name" className="field__label">
-                  Name
-                </label>
-                <input id="su-name" className="input" type="text" autoComplete="name" onChange={set('name')} />
-              </div>
+              <label className="field">
+                <span className="field__label">Name</span>
+                <input className="input" autoComplete="name" value={form.name} onChange={set('name')} />
+              </label>
             )}
-            <div className="field">
-              <label htmlFor="su-email" className="field__label">
-                Email
-              </label>
-              <input id="su-email" className="input" type="email" autoComplete="email" placeholder="you@example.com" value={form.email} onChange={set('email')} />
-            </div>
-            <div className="field">
-              <label htmlFor="su-pw" className="field__label">
-                Password
-              </label>
+            <label className="field">
+              <span className="field__label">Email</span>
+              <input className="input" type="email" autoComplete="email" value={form.email} onChange={set('email')} />
+            </label>
+            <label className="field">
+              <span className="field__label">Password</span>
               <div className="input-wrap">
                 <input
-                  id="su-pw"
                   className="input input--with-btn"
                   type={showPw ? 'text' : 'password'}
                   autoComplete={isSignup ? 'new-password' : 'current-password'}
-                  aria-describedby="su-pw-hint"
                   value={form.password}
                   onChange={set('password')}
                 />
-                <button type="button" className="input-wrap__btn" onClick={() => setShowPw((v) => !v)} aria-pressed={showPw}>
+                <button type="button" className="input-wrap__btn" onClick={() => setShowPw((v) => !v)}>
                   {showPw ? 'Hide' : 'Show'}
                 </button>
               </div>
-              <span id="su-pw-hint" className="field__hint">
-                At least 8 characters.
-              </span>
-            </div>
-            {error && (
-              <p className="form-error" role="alert">
-                {error}
-              </p>
-            )}
-            <button type="submit" className="btn btn--primary btn--lg" disabled={busy}>
-              {busy ? 'One moment…' : isSignup ? 'Create account' : 'Log in'}
+              <span className="field__hint">At least 8 characters.</span>
+            </label>
+            <button type="submit" className="btn btn--primary btn--lg">
+              {isSignup ? 'Create account' : 'Log in'}
             </button>
           </form>
 
           <p className="center muted">
             {isSignup ? 'Already tracking? ' : 'New here? '}
-            <button type="button" className="link-btn" onClick={() => { setMode(isSignup ? 'login' : 'signup'); setError(''); }}>
+            <button type="button" className="link-btn" onClick={() => setIsSignup((v) => !v)}>
               {isSignup ? 'Log in' : 'Create an account'}
             </button>
           </p>
