@@ -129,3 +129,16 @@
   .hero-grid { grid-template-rows: repeat(7, 12px); grid-auto-columns: 12px; gap: 3px; }
   .hero-grid span { width: 12px; height: 12px; border-radius: 3px; }
 }
+
+/* Season goal card (Today) */
+.season-card { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px; }
+.season-card__icon { background: #4E2C20; color: var(--accent); }
+.season-card__text { flex: 1 1 360px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.season-card__progress { flex: 0 1 220px; display: flex; flex-direction: column; gap: 8px; }
+.season-card__progress strong { color: var(--text); }
+@media (max-width: 760px) {
+  .season-card__progress { flex-basis: 100%; }
+}
+
+/* Season days still to come */
+.heatmap__cell--upcoming { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }

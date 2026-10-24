@@ -14,8 +14,9 @@ function App() {
         {/* Make layout in /layouts */}
         <Route>
           <Route element={<RootLayout />}>
-            {/* <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard/>} /> */}
+            <Route index element={<Home />} />
+            <Route path="dashboard" element={<Dashboard/>} />
+            <Route path="*" element={<Home />} />
           </Route>
 
         </Route>

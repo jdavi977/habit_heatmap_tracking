@@ -1,14 +1,23 @@
+import { useState } from 'react'
 import { Outlet } from 'react-router'
-import Header from '../components/Header'
+import Header, { BottomNav } from '../components/Header'
+import { AddActionDialog } from '../components/AddActionDialog'
+import type { LayoutContext } from './useLayout'
 
 export default function RootLayout() {
+    const [dialog, setDialog] = useState<{ open: boolean; pillarId?: string }>({ open: false })
+    const context: LayoutContext = { openAddAction: (pillarId) => setDialog({ open: true, pillarId }) }
+    const openBlank = () => context.openAddAction()
+
     return (
-        <div>
-            <Header />
+        <>
+            <Header onAdd={openBlank} />
             <main>
-                <Outlet />
+                <Outlet context={context} />
             </main>
-        </div>
+            <BottomNav onAdd={openBlank} />
+            <AddActionDialog open={dialog.open} pillarId={dialog.pillarId} onClose={() => setDialog({ open: false })} />
+        </>
     )
 
 }
