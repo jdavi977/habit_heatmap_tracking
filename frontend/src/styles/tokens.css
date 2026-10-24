@@ -1,0 +1,81 @@
+/*
+ * Design tokens — every color, font and size used in the prototype.
+ * Change a value here and it updates everywhere.
+ * Heatmap color ramps live in src/lib/ramps.js because users can pick them per pillar.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: #121311;
+  --bg-deep: #0b0c0a;
+  --surface: #1a1b18;
+  --surface-2: #1f201c;
+  --raised: #22231f;
+  --nav: #161714;
+
+  /* Lines */
+  --line: #2d2e29;
+  --line-soft: #34352f;
+  --line-strong: #45463f;
+
+  /* Text */
+  --text: #f3f0e8;
+  --text-2: #c9c5ba;
+  --muted: #a9a498;
+  --faint: #8c877c;
+  --off: #5a5b54;
+  --off-2: #3a3b35;
+
+  /* Accent (ember) */
+  --accent: #ff8a3d;
+  --accent-ink: #1c1006;
+  --accent-text: #ff9f55;
+  --accent-hover: #ffc08a;
+  --accent-soft: #2e2620;
+  --flame: #ffb27a;
+  --done-bg: #201a15;
+  --done-line: #4e2c20;
+
+  /* Missed / incomplete (cool blue, distinct in lightness from ember) */
+  --info-bg: #181c2a;
+  --info-line: #2c3556;
+  --info-line-strong: #3a4570;
+  --info-text: #d9def5;
+  --info: #9db0ff;
+  --missed-box: #5566a8;
+  --missed-chip: #1e2540;
+  --missed-cell: #26304f;
+
+  /* Milestone */
+  --milestone-bg: #1e1612;
+  --milestone-line: #5a2f1e;
+  --milestone-text: #d8cfc4;
+
+  /* Live (friend realtime) */
+  --live-bg: #1f2a1c;
+  --live-text: #bde89a;
+  --live: #a6e07a;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', 'Avenir Next', system-ui, sans-serif;
+  --font-body: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, Menlo, monospace;
+
+  /* Shape */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius: 12px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+
+  /* Heatmap cells */
+  --cell: 12px;
+  --cell-gap: 3px;
+
+  /* Layout */
+  --page-max: 1280px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --bottom-nav-h: 84px;
+}
