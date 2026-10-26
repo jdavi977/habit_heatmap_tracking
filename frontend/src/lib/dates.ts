@@ -42,6 +42,11 @@ export function endOfMonth(key: string) {
   return toKey(new Date(d.getFullYear(), d.getMonth() + 1, 0));
 }
 
+/** Number of days in the key's month (28–31). */
+export function daysInMonth(key: string) {
+  return fromKey(endOfMonth(key)).getDate();
+}
+
 export function daysBetween(fromK: string, toK: string) {
   return Math.round((fromKey(toK).getTime() - fromKey(fromK).getTime()) / 86400000);
 }
@@ -74,6 +79,6 @@ export const format = {
   longDate: (key: string) => fLongDate.format(fromKey(key)), // Oct 17, 2026
 };
 
-export const WEEKDAY_LETTERS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+export const WEEKDAY_LETTERS = ['S', 'M', 'T', 'W', 'T', 'F', 'Sa'];
 export const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export const WEEKDAY_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

@@ -14,7 +14,6 @@
 .streak-list li { display: inline-flex; align-items: center; gap: 0.4375rem; font-size: 0.875rem; color: var(--text-2); }
 .streak-list strong { font-family: var(--font-display); font-size: 1.25rem; color: var(--text); }
 
-.today-tabs { display: none; }
 .today-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(21.25rem, 100%), 1fr)); gap: 1rem; align-items: start; }
 .today-col { display: flex; flex-direction: column; gap: 0.875rem; padding: 1.125rem; }
 .today-col__head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
@@ -39,10 +38,6 @@
   .today-head { align-items: stretch; }
   .today-head__stats { flex-direction: column; }
   .stat-card { min-width: 0; }
-  .today-tabs { display: flex; }
-  .today-col { display: none; padding: 0; background: none; border: 0; }
-  .today-col.is-active { display: flex; }
-  .today-col .today-col__head { display: none; }
   .pillar-card { padding: 1rem; }
 }
 
