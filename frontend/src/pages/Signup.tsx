@@ -3,7 +3,7 @@ import { rampColors } from '../lib/ramps.ts';
 import { LogoMark } from '../components/Logo.tsx';
 import { signUp, logIn, MIN_PASSWORD_LENGTH } from '../lib/auth.ts';
 
-/** Decorative heatmap that fills in on load. */
+/** Decorative heatmap that fills in on load.. */
 function HeroGrid() {
   const cells = useMemo(() => {
     const ramp = ['#2A2420', ...rampColors('ember').slice(1)];
