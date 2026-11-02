@@ -20,6 +20,10 @@ export default function Home() {
   const seasonLength = daysBetween(season.start_date, season.end_date) + 1;
   const seasonDay = Math.min(daysBetween(season.start_date, TODAY) + 1, seasonLength);
 
+  const due = actions.filter((a) => a.frequency === "daily" && a.start_date <= TODAY);
+  const done = due.filter((a) => completions[a.id]?.has(TODAY));
+
+  console.log(completions);
   // TODO 20: track completion toggles and persist them.
 
   return (
@@ -34,11 +38,10 @@ export default function Home() {
           <div className="stat-card">
             <span className="stat-card__label">Today's daily actions</span>
             {/* TODO 8: done / due count for today's daily actions (only actions whose start_date <= today). */}
-
-            <span className="stat-card__value"></span>
+            <span className="stat-card__value">{done.length} / {due.length}</span>
             <span className="progress">
               {/* TODO 9: width = done / due as a percentage. */}
-              <span style={{ width: '0%' }} />
+              <span style={{ width: `${(done.length / due.length) * 100}%` }} />
             </span>
           </div>
           <div className="stat-card stat-card--streaks">
@@ -57,7 +60,6 @@ export default function Home() {
         </span>
         <div className="season-card__text">
           {/* TODO 3: season name with start and end dates. */}
-
           <span className="eyebrow">{season["name"]} {format.monthDay(season["start_date"])} | {format.monthDay(season["end_date"])}</span>
           {/* TODO 4: goal title. */}
           <h2>{goal["title"]}</h2>
