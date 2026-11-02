@@ -10,7 +10,13 @@ const LINKS: { to: string; label: string; icon: IconName; end?: boolean }[] = [
 ];
 
 /** Desktop header. On phones the links move to <BottomNav>. */
-export default function Header({ onAdd }: { onAdd: () => void }) {
+export default function Header({
+  onAdd,
+  onSignOut,
+}: {
+  onAdd: () => void;
+  onSignOut: () => void;
+}) {
   return (
     <header className="topnav">
       <div className="topnav__inner">
@@ -31,6 +37,10 @@ export default function Header({ onAdd }: { onAdd: () => void }) {
             <Icon name="bell" strokeWidth={1.8} />
           </button>
           <Avatar name={profile.display_name} size={44} label="Account" />
+          {/* Plain button for now. Add a class (e.g. a ghost/secondary variant) to style it. */}
+          <button type="button" className="btn" onClick={onSignOut}>
+            Log out
+          </button>
         </div>
       </div>
     </header>
