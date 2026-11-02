@@ -51,6 +51,10 @@ export function daysBetween(fromK: string, toK: string) {
   return Math.round((fromKey(toK).getTime() - fromKey(fromK).getTime()) / 86400000);
 }
 
+export function today() {
+  return toKey(new Date());
+}
+
 /** ISO-8601 week number. */
 export function isoWeek(key: string) {
   const d = fromKey(key);
@@ -72,6 +76,8 @@ const fLongDate = f({ month: 'short', day: 'numeric', year: 'numeric' });
 export const format = {
   weekday: (key: string) => fWeekday.format(fromKey(key)), // Saturday
   weekdayShort: (key: string) => fWeekdayShort.format(fromKey(key)), // Sat
+  weekdayLetter: (key: string) => WEEKDAY_LETTERS[weekday(key)], // Sa
+  dayOfMonth: (key: string) => String(fromKey(key).getDate()), // 17
   monthDay: (key: string) => fMonthDay.format(fromKey(key)), // October 17
   short: (key: string) => fShort.format(fromKey(key)), // Oct 17
   month: (key: string) => fMonth.format(fromKey(key)), // Oct

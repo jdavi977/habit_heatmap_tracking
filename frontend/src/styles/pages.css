@@ -14,7 +14,7 @@
 .streak-list li { display: inline-flex; align-items: center; gap: 0.4375rem; font-size: 0.875rem; color: var(--text-2); }
 .streak-list strong { font-family: var(--font-display); font-size: 1.25rem; color: var(--text); }
 
-.today-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(21.25rem, 100%), 1fr)); gap: 1rem; align-items: start; }
+.today-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
 .today-col { display: flex; flex-direction: column; gap: 0.875rem; padding: 1.125rem; }
 .today-col__head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
 
@@ -28,7 +28,8 @@
 .week-strip__num { font-family: var(--font-mono); font-size: 0.875rem; }
 .week-strip__heat { width: 0.375rem; height: 0.375rem; border-radius: 2px; }
 
-.pillar-card { display: flex; flex-direction: column; gap: 1rem; }
+.pillar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+.pillar-card { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
 .pillar-card__title { display: flex; align-items: center; gap: 0.75rem; }
 .pillar-card__stats { display: flex; flex-wrap: wrap; gap: 0.375rem 1.125rem; font-size: 0.875rem; color: var(--muted); }
 .pillar-card__stats strong { color: var(--text); font-weight: 600; }
@@ -38,6 +39,7 @@
   .today-head { align-items: stretch; }
   .today-head__stats { flex-direction: column; }
   .stat-card { min-width: 0; }
+  .pillar-grid, .today-cols { grid-template-columns: 1fr; }
   .pillar-card { padding: 1rem; }
 }
 
