@@ -6,11 +6,14 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
 import './styles/pages.css';
+import { AuthProvider } from './auth/authprovider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )
