@@ -46,6 +46,7 @@ export default function Home() {
   const dailyTodo = dailyDue.filter((a) => !isDone(completions, a.id, day));
   // TODO 20: track completion toggles and persist them.
 
+
   const shownPillars = pillars.filter((p) => pillar === "all" || p.id === pillar);
 
   return (
