@@ -21,22 +21,3 @@ export const season_creation = async (
     if (error) throw error;
     return data;
 };
-
-
-const createSeason = async () => {
-    try {
-        const result = await season_creation(
-            "Winter 2026",
-            "2026-12-01",
-            "2027-02-28",
-            "Become a better version of myself",
-            "Focus on consistent personal growth.",
-            ["Health", "Career", "Relationships"]
-        );
-
-        console.log("Season created:", result);
-
-    } catch (error) {
-        console.error("Error creating season:", error);
-    }
-};

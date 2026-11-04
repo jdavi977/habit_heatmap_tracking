@@ -5,18 +5,18 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import NotFound from './pages/NotFound'
 import { PublicOnly, RequireAuth } from './auth/RouteGuards'
-import { useEffect } from "react";
-import { season_creation } from "./lib/season_creation";
+// import { useEffect } from "react";
+// import { season_creation } from "./lib/season_creation";
 
 function App() {
-   useEffect(() => {
-        // Expose function to browser console
-        (window as any).season_creation = season_creation;
+  //  useEffect(() => {
+  //       // Expose function to browser console
+  //       (window as any).season_creation = season_creation;
 
-        return () => {
-            delete (window as any).season_creation;
-        };
-    }, []);
+  //       return () => {
+  //           delete (window as any).season_creation;
+  //       };
+  //   }, []);
 
   return (
     <>
